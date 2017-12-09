@@ -1,0 +1,35 @@
+//
+//  GroupTableViewTextCell.swift
+//  MobileProject
+//
+//  Created by Janus on 2017. 12. 6..
+//  Copyright © 2017년 Janus. All rights reserved.
+//
+
+import UIKit
+
+class GroupTableViewTextCell: UITableViewCell {
+    @IBOutlet var groupNameLabel: UILabel!{
+        didSet{
+            groupNameLabel.numberOfLines = 0
+        }
+    }
+    
+    @IBOutlet var groupManagerLabel: UILabel!{
+        didSet{
+            groupManagerLabel.numberOfLines = 0
+        }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}

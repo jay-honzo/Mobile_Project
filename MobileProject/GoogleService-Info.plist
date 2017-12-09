@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>691454796313-5s99dceb4bk72u6jtjngs21ojd18b68s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.691454796313-5s99dceb4bk72u6jtjngs21ojd18b68s</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBiC5x-liVXmKec8r4W_TgMIZXwEc6X7CY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>691454796313</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kr.ac.ssu.MobileProject</string>
+	<key>PROJECT_ID</key>
+	<string>macmobile-fdd50</string>
+	<key>STORAGE_BUCKET</key>
+	<string>macmobile-fdd50.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:691454796313:ios:e7d1652931e8e1f6</string>
+	<key>DATABASE_URL</key>
+	<string>https://macmobile-fdd50.firebaseio.com</string>
+</dict>
+</plist>
