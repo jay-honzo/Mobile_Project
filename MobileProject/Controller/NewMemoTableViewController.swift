@@ -11,6 +11,7 @@ import CoreData
 
 class NewMemoTableViewController: UITableViewController, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: - 변수
+    var account = Account()
     @IBOutlet var newMemoTableView: UITableView!
     @IBOutlet var memoTextView: UITextView!
     @IBOutlet var titleLable: HoshiTextField!{
@@ -205,15 +206,20 @@ class NewMemoTableViewController: UITableViewController, UITextViewDelegate, UIT
      return true
      }
      */
-    
-    /*
+
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "saveSegue" {
+            let tabController = segue.destination as! UITabBarController
+            let navController1 = tabController.viewControllers![0] as! UINavigationController
+            let photoController = navController1.topViewController as! PhotoTableViewController
+            let navController2 = tabController.viewControllers![1] as! UINavigationController
+            let groupController = navController2.topViewController as! GroupTableViewController
+            groupController.account = account
+            photoController.account = account
+        }
      }
-     */
     
 }
