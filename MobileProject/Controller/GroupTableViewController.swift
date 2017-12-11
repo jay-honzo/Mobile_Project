@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Firebase
 
 class GroupTableViewController: UITableViewController {
     @IBOutlet var grouptableView: UITableView!
     var searchController: UISearchController!
+    var dataList = [MyGroup]()
+    var refdata : DatabaseReference!
+    var account = Account();
+    var group = MyGroup();
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,9 +26,13 @@ class GroupTableViewController: UITableViewController {
         //grouptableView.contentInsetAdjustmentBehavior = .never
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = account.id! + "'s Group"
         
         searchController = UISearchController(searchResultsController: nil)
         self.navigationItem.searchController = searchController
+        
+        refdata = Database.database().reference().child("group")
+        retrieveData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,7 +50,7 @@ class GroupTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //데이터베이스에서 그룹갯수 가져옴
-        return 2
+        return 1 + dataList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,14 +64,37 @@ class GroupTableViewController: UITableViewController {
             
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewTextCell", for: indexPath) as! GroupTableViewTextCell
+            let data: MyGroup
+            data = dataList[indexPath.row - 1]
             //타이틀이랑 관리자 가져오기
-            cell.groupNameLabel.text = "Name"
-            cell.groupManagerLabel.text = "Manager"
+            cell.groupNameLabel.text = data.name
+            cell.groupManagerLabel.text = "Manager : " + data.manager!
             
             return cell
             
         }
     }
+    
+    func retrieveData(){
+        let key = refdata.queryOrdered(byChild: "member").queryEqual(toValue: "Label")
+        
+        key.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.exists() {
+                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                    for snap in snapshots{
+                        let name = snap.childSnapshot(forPath: "name").value as! String
+                        let manager = snap.childSnapshot(forPath: "manager").value as! String
+                        let description = snap.childSnapshot(forPath: "description").value as! String
+                        let member = snap.childSnapshot(forPath: "member").value as! String
+                        let newdata = MyGroup(name : name, manager : manager, member : member, description :  description)
+                        self.dataList.append(newdata)
+                    }
+                }
+                self.grouptableView.reloadData()
+            }
+        })
+    }
+
     
     /*
      // Override to support conditional editing of the table view.
@@ -100,14 +131,18 @@ class GroupTableViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "newGroupSegue" {
+            let navController = segue.destination as! UINavigationController
+            let destinationController = navController.topViewController as! NewGroupController
+            destinationController.account = account
+            destinationController.exgroupTableView = grouptableView
+            destinationController.dataList = dataList
+        }
      }
-     */
     
 }

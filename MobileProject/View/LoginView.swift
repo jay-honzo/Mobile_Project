@@ -12,19 +12,18 @@ import UIKit
     @IBOutlet var idField: HoshiTextField!{
         didSet{
             idField.clearButtonMode = .whileEditing
+            idField.placeholderFontScale = 1.2
             idField.tag = 1
         }
     }
     @IBOutlet var passwordField: HoshiTextField!{
         didSet{
             passwordField.clearsOnBeginEditing = true
-            //passwordField.clearsOnInsertion = true
+            passwordField.placeholderFontScale = 1.2
             passwordField.isSecureTextEntry = true
             passwordField.tag = 2
         }
     }
-    
-    
 
     /*
     // Only override draw() if you perform custom drawing.

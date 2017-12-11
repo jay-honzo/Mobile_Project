@@ -7,9 +7,11 @@
 //
 
 import UIKit
-import  CoreData
+import CoreData
+import Firebase
 
 class PhotoTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
+    var account = Account();
     
     //MARK:- properties
     @IBOutlet var newMemoButton: UIBarButtonItem!
@@ -25,6 +27,8 @@ class PhotoTableViewController: UITableViewController, NSFetchedResultsControlle
         
         tableView.cellLayoutMarginsFollowReadableWidth = true
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = account.id! + "'s Memo List"
         
         newMemoButton.title = "Add new Memo"
         
@@ -185,7 +189,13 @@ class PhotoTableViewController: UITableViewController, NSFetchedResultsControlle
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! DetailPhotoMemoController
                 destinationController.photoMemo = (searchController.isActive) ? searchResults[indexPath.row] :  photoMemo[indexPath.row]
+                destinationController.account = account
             }
+        }
+        else if segue.identifier == "newMemoSegue" {
+            let navController = segue.destination as! UINavigationController
+            let destinationController = navController.topViewController as! NewMemoTableViewController
+            destinationController.account = account
         }
     }
     

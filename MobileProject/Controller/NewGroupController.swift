@@ -1,44 +1,73 @@
 //
-//  DetailPhotoMemoController.swift
+//  NewGroupController.swift
 //  MobileProject
 //
-//  Created by Janus on 2017. 12. 7..
+//  Created by Janus on 2017. 12. 11..
 //  Copyright © 2017년 Janus. All rights reserved.
 //
 
 import UIKit
+import Firebase
 
-class DetailPhotoMemoController: UITableViewController {
-    @IBOutlet var detailTableView: UITableView!
-    @IBOutlet var headerView: DetailPhotoMemoHeaderView!
-    
-    var photoMemo: PhoteMemoMO!
+class NewGroupController: UITableViewController, UITextViewDelegate {
+    var dataList = [MyGroup]()
+    var refdata : DatabaseReference!
     var account = Account();
+    var count = 0
+    var exgroupTableView: UITableView!
+    
+    @IBOutlet var newGroupTableView: UITableView!
+    @IBOutlet var nameField: HoshiTextField!{
+        didSet{
+            nameField.placeholderFontScale = 1.2
+            nameField.clearButtonMode = .whileEditing
+        }
+    }
+    @IBOutlet var infoField: UITextView!
+    @IBOutlet var idField: UILabel!{
+        didSet{
+            idField.numberOfLines = 0
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        refdata = Database.database().reference().child("group")
         
-        navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = photoMemo.title
-        navigationController?.hidesBarsOnSwipe = false
+        infoField.delegate = self
+        newGroupTableView.separatorStyle = .none
+    }
 
-        detailTableView.delegate = self
-        detailTableView.dataSource = self
-        detailTableView.separatorStyle = .none
-        //detailTableView.contentInsetAdjustmentBehavior = .never
-        
-        headerView.photoMemoImage.image = UIImage(data: photoMemo.photo!)
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+    //MARK:- 텍스트뷰 초기화
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if count == 0 {
+            infoField.text = ""
+            count+=1
+        } else {
+            
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        navigationController?.hidesBarsOnSwipe = false
-        navigationController?.setNavigationBarHidden(false, animated: true)
+    func addData(){
+        let key = refdata.childByAutoId().key
+        let newdata = ["name":nameField.text! as String,
+                       "manager": account.id! as String,
+                       "member": idField.text! as String,
+                       "description": infoField.text! as String]
+        refdata.child(key).setValue(newdata)
+        print("New Data Added")
+    
+        exgroupTableView.reloadData()
     }
-
+    
+    @IBAction func saveGroup(){
+        dismiss(animated: true, completion: addData)
+    }
+    
+    @IBAction func goBack(){
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,27 +82,18 @@ class DetailPhotoMemoController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 5
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailPhotoMemoTextCell", for: indexPath) as! DetailPhotoMemoTextCell
-            cell.textLable.text = photoMemo.title
-            
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DetailPhotoMemoCell", for: indexPath) as! DetailPhotoMemoCell
-            cell.memoLable.text = photoMemo.memo
-            
-            return cell
-            
-        default:
-            fatalError("failed load")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
+        return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -110,7 +130,7 @@ class DetailPhotoMemoController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -118,6 +138,6 @@ class DetailPhotoMemoController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
