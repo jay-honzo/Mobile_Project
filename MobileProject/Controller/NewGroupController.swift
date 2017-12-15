@@ -14,7 +14,7 @@ class NewGroupController: UITableViewController, UITextViewDelegate {
     var refdata : DatabaseReference!
     var account = Account();
     var count = 0
-    var exgroupTableView: UITableView!
+    var memberList: [String]  = []
     
     @IBOutlet var newGroupTableView: UITableView!
     @IBOutlet var nameField: HoshiTextField!{
@@ -36,6 +36,19 @@ class NewGroupController: UITableViewController, UITextViewDelegate {
         
         infoField.delegate = self
         newGroupTableView.separatorStyle = .none
+        
+        memberList.append(account.id!)
+        idField.text = memberList.joined(separator: "\n")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        idField.text = memberList.joined(separator: "\n")
+        newGroupTableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        idField.text = memberList.joined(separator: "\n")
+        newGroupTableView.reloadData()
     }
 
     //MARK:- 텍스트뷰 초기화
@@ -57,7 +70,6 @@ class NewGroupController: UITableViewController, UITextViewDelegate {
         refdata.child(key).setValue(newdata)
         print("New Data Added")
     
-        exgroupTableView.reloadData()
     }
     
     @IBAction func saveGroup(){
@@ -87,13 +99,8 @@ class NewGroupController: UITableViewController, UITextViewDelegate {
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
-        return cell
-    }
-    */
+    }*/
 
     /*
     // Override to support conditional editing of the table view.
@@ -135,8 +142,10 @@ class NewGroupController: UITableViewController, UITextViewDelegate {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "searchMemberSegue" {
+            let destinationController = segue.destination as! SearchMemberController
+            destinationController.viewList = memberList
+        }
     }
     
 

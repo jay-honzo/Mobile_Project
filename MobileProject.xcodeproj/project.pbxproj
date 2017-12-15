@@ -13,6 +13,11 @@
 		1614BCC41FC8412B00934D56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1614BCC31FC8412B00934D56 /* Assets.xcassets */; };
 		1614BCC71FC8412B00934D56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1614BCC51FC8412B00934D56 /* LaunchScreen.storyboard */; };
 		1614BCD21FC8455F00934D56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1614BCD11FC8455F00934D56 /* LoginViewController.swift */; };
+		16156D011FE2FCD100BBE756 /* GroupModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16156D001FE2FCD100BBE756 /* GroupModifyViewController.swift */; };
+		16156D031FE305AD00BBE756 /* ModifyNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16156D021FE305AD00BBE756 /* ModifyNameCell.swift */; };
+		16156D051FE3061D00BBE756 /* ModifyDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16156D041FE3061D00BBE756 /* ModifyDescriptionCell.swift */; };
+		16156D071FE3065600BBE756 /* ModifyMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16156D061FE3065600BBE756 /* ModifyMemberCell.swift */; };
+		16156D091FE3068100BBE756 /* ModifyButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16156D081FE3068100BBE756 /* ModifyButtonCell.swift */; };
 		162A96AC1FD8196D0085007E /* GroupTableViewButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A96AB1FD8196D0085007E /* GroupTableViewButtonCell.swift */; };
 		162A96AE1FD81A210085007E /* GroupTableViewTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A96AD1FD81A210085007E /* GroupTableViewTextCell.swift */; };
 		162A96B01FD81A9E0085007E /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A96AF1FD81A9E0085007E /* GroupTableViewController.swift */; };
@@ -35,11 +40,16 @@
 		169554321FDC441B002AEF6F /* MyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169554311FDC441B002AEF6F /* MyGroup.swift */; };
 		16A344C11FDDA71100B479F7 /* NewGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A344C01FDDA71100B479F7 /* NewGroupController.swift */; };
 		16B773B71FD83E480028E620 /* NewMemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B773B61FD83E480028E620 /* NewMemoTableViewController.swift */; };
+		16C4F1FB1FE2E3F6005750DC /* DetailGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F1FA1FE2E3F6005750DC /* DetailGroupViewController.swift */; };
+		16C4F1FD1FE2EAB1005750DC /* MyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F1FC1FE2EAB1005750DC /* MyData.swift */; };
+		16C4F1FF1FE2EBD3005750DC /* DetailGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4F1FE1FE2EBD3005750DC /* DetailGroupTableViewCell.swift */; };
 		16DD99E41FD91D690009643E /* DetailPhotoMemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD99E31FD91D690009643E /* DetailPhotoMemoController.swift */; };
 		16DD99E61FD91DB70009643E /* DetailPhotoMemoTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD99E51FD91DB70009643E /* DetailPhotoMemoTextCell.swift */; };
 		16DD99EA1FD91FC90009643E /* DetailPhotoMemoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD99E91FD91FC90009643E /* DetailPhotoMemoHeaderView.swift */; };
 		16DD99EC1FD925B90009643E /* DetailPhotoMemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD99EB1FD925B90009643E /* DetailPhotoMemoCell.swift */; };
 		16E424441FDC3B8800B06C01 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E424431FDC3B8200B06C01 /* UserNotifications.framework */; };
+		16F8C1301FDFFCD2007442CD /* SearchMemberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F8C12F1FDFFCD2007442CD /* SearchMemberController.swift */; };
+		16F8C1321FE00493007442CD /* SearchMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F8C1311FE00493007442CD /* SearchMemberCell.swift */; };
 		16FCDE2B1FDCF6E400B3A42E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCDE2A1FDCF6E400B3A42E /* SignUpViewController.swift */; };
 		16FCDE2D1FDCFAEB00B3A42E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FCDE2C1FDCFAEB00B3A42E /* SignUpView.swift */; };
 		CC63708D2CBEF5717C310A9F /* Pods_MobileProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A93B97BA620B56132FD66D /* Pods_MobileProject.framework */; };
@@ -54,6 +64,11 @@
 		1614BCC61FC8412B00934D56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1614BCC81FC8412B00934D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1614BCD11FC8455F00934D56 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		16156D001FE2FCD100BBE756 /* GroupModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModifyViewController.swift; sourceTree = "<group>"; };
+		16156D021FE305AD00BBE756 /* ModifyNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNameCell.swift; sourceTree = "<group>"; };
+		16156D041FE3061D00BBE756 /* ModifyDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyDescriptionCell.swift; sourceTree = "<group>"; };
+		16156D061FE3065600BBE756 /* ModifyMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyMemberCell.swift; sourceTree = "<group>"; };
+		16156D081FE3068100BBE756 /* ModifyButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyButtonCell.swift; sourceTree = "<group>"; };
 		162A96AB1FD8196D0085007E /* GroupTableViewButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewButtonCell.swift; sourceTree = "<group>"; };
 		162A96AD1FD81A210085007E /* GroupTableViewTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewTextCell.swift; sourceTree = "<group>"; };
 		162A96AF1FD81A9E0085007E /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
@@ -77,12 +92,17 @@
 		169554311FDC441B002AEF6F /* MyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroup.swift; sourceTree = "<group>"; };
 		16A344C01FDDA71100B479F7 /* NewGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupController.swift; sourceTree = "<group>"; };
 		16B773B61FD83E480028E620 /* NewMemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoTableViewController.swift; sourceTree = "<group>"; };
+		16C4F1FA1FE2E3F6005750DC /* DetailGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroupViewController.swift; sourceTree = "<group>"; };
+		16C4F1FC1FE2EAB1005750DC /* MyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyData.swift; sourceTree = "<group>"; };
+		16C4F1FE1FE2EBD3005750DC /* DetailGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroupTableViewCell.swift; sourceTree = "<group>"; };
 		16DD99E31FD91D690009643E /* DetailPhotoMemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoMemoController.swift; sourceTree = "<group>"; };
 		16DD99E51FD91DB70009643E /* DetailPhotoMemoTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoMemoTextCell.swift; sourceTree = "<group>"; };
 		16DD99E91FD91FC90009643E /* DetailPhotoMemoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoMemoHeaderView.swift; sourceTree = "<group>"; };
 		16DD99EB1FD925B90009643E /* DetailPhotoMemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoMemoCell.swift; sourceTree = "<group>"; };
 		16E424431FDC3B8200B06C01 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		16E424451FDC3B9500B06C01 /* MobileProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MobileProject.entitlements; sourceTree = "<group>"; };
+		16F8C12F1FDFFCD2007442CD /* SearchMemberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemberController.swift; sourceTree = "<group>"; };
+		16F8C1311FE00493007442CD /* SearchMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemberCell.swift; sourceTree = "<group>"; };
 		16FCDE2A1FDCF6E400B3A42E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		16FCDE2C1FDCFAEB00B3A42E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		526E442404CE44D6336B65C7 /* Pods-MobileProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileProject/Pods-MobileProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,10 +174,13 @@
 				1614BCD11FC8455F00934D56 /* LoginViewController.swift */,
 				16510F8C1FD720BF00068CDA /* PhotoTableViewController.swift */,
 				162A96AF1FD81A9E0085007E /* GroupTableViewController.swift */,
+				16C4F1FA1FE2E3F6005750DC /* DetailGroupViewController.swift */,
+				16156D001FE2FCD100BBE756 /* GroupModifyViewController.swift */,
 				16B773B61FD83E480028E620 /* NewMemoTableViewController.swift */,
 				16DD99E31FD91D690009643E /* DetailPhotoMemoController.swift */,
 				16FCDE2A1FDCF6E400B3A42E /* SignUpViewController.swift */,
 				16A344C01FDDA71100B479F7 /* NewGroupController.swift */,
+				16F8C12F1FDFFCD2007442CD /* SearchMemberController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -173,6 +196,12 @@
 				16DD99E91FD91FC90009643E /* DetailPhotoMemoHeaderView.swift */,
 				16DD99EB1FD925B90009643E /* DetailPhotoMemoCell.swift */,
 				16FCDE2C1FDCFAEB00B3A42E /* SignUpView.swift */,
+				16F8C1311FE00493007442CD /* SearchMemberCell.swift */,
+				16C4F1FE1FE2EBD3005750DC /* DetailGroupTableViewCell.swift */,
+				16156D021FE305AD00BBE756 /* ModifyNameCell.swift */,
+				16156D041FE3061D00BBE756 /* ModifyDescriptionCell.swift */,
+				16156D061FE3065600BBE756 /* ModifyMemberCell.swift */,
+				16156D081FE3068100BBE756 /* ModifyButtonCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +211,7 @@
 			children = (
 				1695542F1FDC43D6002AEF6F /* Account.swift */,
 				169554311FDC441B002AEF6F /* MyGroup.swift */,
+				16C4F1FC1FE2EAB1005750DC /* MyData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,15 +403,23 @@
 				1645FB0C1FCBB6000060B3EC /* MadokaTextField.swift in Sources */,
 				1645FB091FCBB6000060B3EC /* YokoTextField.swift in Sources */,
 				1645FB0D1FCBB6000060B3EC /* KaedeTextField.swift in Sources */,
+				16F8C1301FDFFCD2007442CD /* SearchMemberController.swift in Sources */,
 				16DD99EA1FD91FC90009643E /* DetailPhotoMemoHeaderView.swift in Sources */,
 				16FCDE2B1FDCF6E400B3A42E /* SignUpViewController.swift in Sources */,
+				16156D031FE305AD00BBE756 /* ModifyNameCell.swift in Sources */,
 				1645FB061FCBB6000060B3EC /* YoshikoTextField.swift in Sources */,
 				169554321FDC441B002AEF6F /* MyGroup.swift in Sources */,
+				16156D011FE2FCD100BBE756 /* GroupModifyViewController.swift in Sources */,
 				16DD99E41FD91D690009643E /* DetailPhotoMemoController.swift in Sources */,
 				16A344C11FDDA71100B479F7 /* NewGroupController.swift in Sources */,
 				162A96AC1FD8196D0085007E /* GroupTableViewButtonCell.swift in Sources */,
 				162A96AE1FD81A210085007E /* GroupTableViewTextCell.swift in Sources */,
 				1645FB0B1FCBB6000060B3EC /* JiroTextField.swift in Sources */,
+				16F8C1321FE00493007442CD /* SearchMemberCell.swift in Sources */,
+				16156D051FE3061D00BBE756 /* ModifyDescriptionCell.swift in Sources */,
+				16156D071FE3065600BBE756 /* ModifyMemberCell.swift in Sources */,
+				16156D091FE3068100BBE756 /* ModifyButtonCell.swift in Sources */,
+				16C4F1FF1FE2EBD3005750DC /* DetailGroupTableViewCell.swift in Sources */,
 				1645FB0A1FCBB6000060B3EC /* TextFieldEffects.swift in Sources */,
 				16510F8D1FD720BF00068CDA /* PhotoTableViewController.swift in Sources */,
 				1645FA441FCBA3EB0060B3EC /* LoginView.swift in Sources */,
@@ -391,7 +429,9 @@
 				1614BCD21FC8455F00934D56 /* LoginViewController.swift in Sources */,
 				162A96B31FD8263F0085007E /* PhotoMemo.xcdatamodeld in Sources */,
 				1614BCBD1FC8412B00934D56 /* AppDelegate.swift in Sources */,
+				16C4F1FB1FE2E3F6005750DC /* DetailGroupViewController.swift in Sources */,
 				169554301FDC43D6002AEF6F /* Account.swift in Sources */,
+				16C4F1FD1FE2EAB1005750DC /* MyData.swift in Sources */,
 				1645FB071FCBB6000060B3EC /* HoshiTextField.swift in Sources */,
 				16FCDE2D1FDCFAEB00B3A42E /* SignUpView.swift in Sources */,
 				1645FB081FCBB6000060B3EC /* MinoruTextField.swift in Sources */,
