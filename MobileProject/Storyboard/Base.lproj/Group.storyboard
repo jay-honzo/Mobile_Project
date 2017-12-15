@@ -1027,7 +1027,7 @@
                         <constraints>
                             <constraint firstItem="wvH-fv-Bi3" firstAttribute="top" secondItem="NpG-WL-mlX" secondAttribute="top" id="0rw-Uk-S0c"/>
                             <constraint firstItem="wvH-fv-Bi3" firstAttribute="leading" secondItem="NpG-WL-mlX" secondAttribute="leading" id="100-al-wKn"/>
-                            <constraint firstAttribute="bottom" secondItem="wvH-fv-Bi3" secondAttribute="bottom" id="egW-tn-oLg"/>
+                            <constraint firstItem="NpG-WL-mlX" firstAttribute="bottom" secondItem="wvH-fv-Bi3" secondAttribute="bottom" id="egW-tn-oLg"/>
                             <constraint firstItem="wvH-fv-Bi3" firstAttribute="trailing" secondItem="NpG-WL-mlX" secondAttribute="trailing" id="iCc-tM-bHP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NpG-WL-mlX"/>
