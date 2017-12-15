@@ -12,10 +12,11 @@ import Firebase
 class GroupTableViewController: UITableViewController {
     @IBOutlet var grouptableView: UITableView!
     var searchController: UISearchController!
-    var dataList = [MyGroup]()
+    public var dataList = [MyGroup]()
     var refdata : DatabaseReference!
     var account = Account();
     var group = MyGroup();
+    var count = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,18 @@ class GroupTableViewController: UITableViewController {
         self.navigationItem.searchController = searchController
         
         refdata = Database.database().reference().child("group")
-        retrieveData()
+        if count == 0{
+            retrieveData()
+            count += 1
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if count > 1 {
+            retrieveData()
+        }
+        count = 2
+        grouptableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,24 +60,18 @@ class GroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         //데이터베이스에서 그룹갯수 가져옴
-        return 1 + dataList.count
+//        return 1 + dataList.count
+        return dataList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-            
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewButtonCell", for: indexPath) as! GroupTableViewButtonCell
-            cell.addGroup.setTitle("Add Group", for: .normal)
-            
-            return cell
-            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewTextCell", for: indexPath) as! GroupTableViewTextCell
             let data: MyGroup
-            data = dataList[indexPath.row - 1]
+            //data = dataList[indexPath.row - 1]
+            data = dataList[indexPath.row]
             //타이틀이랑 관리자 가져오기
             cell.groupNameLabel.text = data.name
             cell.groupManagerLabel.text = "Manager : " + data.manager!
@@ -76,12 +82,15 @@ class GroupTableViewController: UITableViewController {
     }
     
     func retrieveData(){
-        let key = refdata.queryOrdered(byChild: "member").queryEqual(toValue: "Label")
+        self.dataList.removeAll()
+        let key = refdata.queryOrdered(byChild: "name")
         
         key.observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.exists() {
-                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                    for snap in snapshots{
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshots{
+                    let member = snap.childSnapshot(forPath: "member").value as! String
+                    let members: [String] = member.components(separatedBy: "\n")
+                    if members.contains(self.account.id!) {
                         let name = snap.childSnapshot(forPath: "name").value as! String
                         let manager = snap.childSnapshot(forPath: "manager").value as! String
                         let description = snap.childSnapshot(forPath: "description").value as! String
@@ -94,43 +103,6 @@ class GroupTableViewController: UITableViewController {
             }
         })
     }
-
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
     
      // MARK: - Navigation
      
@@ -140,8 +112,15 @@ class GroupTableViewController: UITableViewController {
             let navController = segue.destination as! UINavigationController
             let destinationController = navController.topViewController as! NewGroupController
             destinationController.account = account
-            destinationController.exgroupTableView = grouptableView
             destinationController.dataList = dataList
+        }
+        if segue.identifier == "showDetailGroup" {
+            if let indexPath = grouptableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! DetailGroupViewController
+                //destinationController.group = dataList[indexPath.row-1]
+                destinationController.group = dataList[indexPath.row]
+                destinationController.account = account
+            }
         }
      }
     

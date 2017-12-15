@@ -17,6 +17,7 @@ class MyGroup {
     init(name: String?, manager: String?, member: String?, description: String?) {
         self.name = name
         self.manager = manager
+        self.member = member
         self.description = description
     }
     
